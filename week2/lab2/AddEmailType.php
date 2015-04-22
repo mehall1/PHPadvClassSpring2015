@@ -13,10 +13,8 @@
         $util = new Util();
         $validator = new Validator();
         
-        
-        
-        $emailtypeid = filter_input(INPUT_POST, 'emailtypeid');
-        $email = filter_input(INPUT_POST, 'email');
+              
+        $emailtype = filter_input(INPUT_POST, 'emailtype');
         $active = filter_input(INPUT_POST, 'active');
         
         $errors = array();
@@ -39,11 +37,8 @@
         if ( $util->isPostRequest() ) 
         {
          // we validate only if a post has been made
-        if ( !$validator->emailIsValid($email) ) {
-            $errors[] = 'Email is not valid';
-        }
         
-        if ( empty($emailtypeid) ) {
+        if ( empty($emailtype) ) {
             $errors[] = 'Email type is invalid';
         }
         
@@ -60,18 +55,19 @@
         } 
         else {
         
-            $emailModel = new EmailModel();
+            $emailtypeModel = new EmailTypeModel();
                     
-            $emailModel->map(filter_input_array(INPUT_POST));
+            $emailtypeModel->map(filter_input_array(INPUT_POST));
                     
                    
-            if ( $emailDAO->save($emailModel) ) 
+            if ( $emailtypeDAO->save($emailtypeModel) ) 
             {
-               echo 'Email Added';
+               echo 'Email Type Added';
+               
             } 
             else 
             {
-               echo 'Email not added';
+               echo 'Email Type not added';
             }
                    
         }
@@ -82,34 +78,18 @@
         
         
         ?>
-        
         <br />
         <a href="AddEmail.php"> Add Email </a> &nbsp &nbsp
         <a href="AddEmailType.php"> Add Email Type </a>
         
-        <h3> Add Email </h3>
+        <h3> Add Email Type </h3>
         
         <form action="#" method="post">
-            <label> Email: </label>
-            <input type="text" name="email" value="<?php echo $email; ?>" placeholder="" /> <br />
             
             <label>Email Type:</label> 
-            <select name="emailtypeid">
-                <?php 
-                    foreach($emailtypes as $value)
-                    {
-                        if($value->getEmailtypeid() == $emailtypeid)
-                        {
-                            echo '<option value="',$value->getEmailtypeid(),'" selected="selected">',$value->getEmailtype(),'</option>';
-                        }
-                        else
-                        {
-                            echo '<option value="',$value->getEmailtypeid(),'">',$value->getEmailtype(),'</option>';
-                        }
-                        
-                    }
-             ?>               
-            </select> <br />
+            <input type="text" name="emailtype" value="<?php echo $emailtype; ?>" />
+            
+            <br />
             
             <label> Active: </label>
             <input type="number" max="1" min="0" name="active" value="<?php echo $active; ?>" /> <br />
@@ -123,27 +103,24 @@
         
         <table border="1" cellpadding="5">
                 <tr>
-                    <th>Email</th>
+                    
                     <th>Email Type</th>
-                    <th>Last updated</th>
-                    <th>Logged</th>
                     <th>Active</th>
                     <th>Update</th>
                     <th>Delete</th>
                 </tr>
          <?php 
-            $emails = $emailDAO->getAllRows(); 
-            foreach ($emails as $value) {
-                echo '<tr><td>',$value->getEmail(),'</td><td>',$value->getEmailtype(),'</td><td>',date("F j, Y g:i(s) a", strtotime($value->getLastupdated())),'</td><td>',date("F j, Y g:i(s) a", strtotime($value->getLogged())),'</td>';
+            $emailtypes = $emailtypeDAO->getAllRows(); 
+            foreach ($emailtypes as $value) {
+                echo '<tr><td>',$value->getEmailtype(),'</td>';
                 echo  '<td>', ( $value->getActive() == 1 ? 'Yes' : 'No') ,'</td>' ;
-                echo '<td> <a href=UpdateEmail.php?emailid=',$value->getEmailid(),'>Update</a></td>';
-                echo '<td> <a href=DeleteEmail.php?emailid=',$value->getEmailid(),'>Delete</a></td></tr>';
+                echo '<td> <a href=UpdateEmailType.php?emailtypeid=',$value->getEmailtypeid(),'>Update</a></td>';
+                echo '<td> <a href=DeleteEmailType.php?emailtypeid=',$value->getEmailtypeid(),'>Delete</a></td></tr>';
             }
 
          ?>
             </table>
-        
-        
+       
         
     </body>
 </html>

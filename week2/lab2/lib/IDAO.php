@@ -10,6 +10,8 @@
  *
  * @author 001148417
  */
+namespace week2\mhall;
+
 interface IDAO {
     
    public function getByID($id);

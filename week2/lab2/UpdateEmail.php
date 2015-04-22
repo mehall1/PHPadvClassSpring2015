@@ -1,5 +1,6 @@
+<?php namespace week2\mhall; ?>
 <?php include './bootstrap.php'; ?>
-<!DOCTYPE html>
+
 <html>
     <head>
         <meta charset="UTF-8">
@@ -35,7 +36,7 @@
          
         if ( $util->isPostRequest() ) {
             
-            var_dump($email);
+            
             if ( !$validator->emailIsValid($email) ) {
             $errors[] = 'Email is not valid';
             }
@@ -76,17 +77,10 @@
         }
         
         
-         
-              
-        /*
-        $phoneTypeService = new PhoneTypeService($db, $util, $validator, $phoneTypeDAO, $phonetypeModel);
-        
-        if ( $phoneTypeDAO->idExisit($phonetypeModel->getPhonetypeid()) ) {
-            $phoneTypeService->saveForm();
-        }-->*/
-        
-        
         ?>
+        <br />
+        <a href="AddEmail.php"> Add Email </a> &nbsp &nbsp
+        <a href="AddEmailType.php"> Add Email Type </a>
         
         
          <h3>Update Email</h3>
@@ -117,11 +111,7 @@
             <input type="submit" value="Update" />
         </form>
          
-        <!-- 
-         ?php         
-             $phoneTypeService->displayPhonesActions();
-                          
-         ?-->
+       
                   
     </body>
 </html>

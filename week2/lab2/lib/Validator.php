@@ -7,6 +7,8 @@
  *
  * @author Gabriel Forti
  */
+namespace week2\mhall;
+
 class Validator {
 
     /**

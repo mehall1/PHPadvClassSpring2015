@@ -6,6 +6,8 @@
  * @author GForti
  */
 
+namespace week2\mhall;
+use pdo;
 
 class DB {
     

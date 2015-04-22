@@ -5,6 +5,8 @@
  *
  * @author User
  */
+namespace week2\mhall;
+
 class Util {
     
     

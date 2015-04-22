@@ -10,6 +10,8 @@
  *
  * @author 001148417
  */
+namespace week2\mhall;
+
 interface IModel {
    
     public function reset();

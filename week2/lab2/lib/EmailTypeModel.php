@@ -13,6 +13,7 @@
  */
 
 
+namespace week2\mhall;
 
 class EmailTypeModel implements IModel {
     

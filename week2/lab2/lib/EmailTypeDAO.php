@@ -12,8 +12,10 @@
  * @author 001148417
  */
 
-
 /* Finish doing the rest of the select commands for delete and get by id */
+namespace week2\mhall;
+use pdo;
+
 class EmailTypeDAO implements IDAO{
     
     private $DB = null;
@@ -47,9 +49,7 @@ class EmailTypeDAO implements IDAO{
         $model = new EmailTypeModel();
         $db = $this->getDB();
         
-        $stmt = $db->prepare("Select email.emailid, email.email, email.emailtypeid"
-                . ", emailtype.emailtypeid, emailtype.emailtype from emailtype left join"
-                . " email on emailtype.emailtypeid = email.emailtypeid where emailtype.emailtypeid = :emailtypeid");
+        $stmt = $db->prepare("Select * from emailtype where emailtypeid = :emailtypeid");
         
         if ($stmt->execute(array(':emailtypeid' => $id)) && $stmt->rowCount() > 0) {
             $results = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -68,7 +68,7 @@ class EmailTypeDAO implements IDAO{
         
         if ( $this ->idExist($model->getEmailtypeid()) ) {
             $values[":emailtypeid"] = $model->getEmailtypeid();
-            $stmt = $db->prepare("Updated emailtype set active = :active, emailtype = :emailtype where emailtypeid = :emailtypeid");
+            $stmt = $db->prepare("Update emailtype set active = :active, emailtype = :emailtype where emailtypeid = :emailtypeid");
             
         }
         
@@ -83,7 +83,7 @@ class EmailTypeDAO implements IDAO{
         return false;
     }
     
-    public function delete($db) {
+    public function delete($id) {
         $db = $this->getDB();
         $stmt = $db->prepare("Delete from emailtype where emailtypeid = :emailtypeid");
         

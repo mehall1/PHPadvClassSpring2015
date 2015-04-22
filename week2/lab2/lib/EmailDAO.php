@@ -11,6 +11,9 @@
  *
  * @author 001148417
  */
+namespace week2\mhall;
+use pdo;
+
 class EmailDAO implements IDAO {
     
     private $DB = null;
@@ -76,7 +79,7 @@ class EmailDAO implements IDAO {
             
             );
         
-        var_dump($model);
+        
         
         if ($this->idExist($model->getEmailid()) ) {
             $values[":emailid"] = $model->getEmailid();  
@@ -100,7 +103,7 @@ class EmailDAO implements IDAO {
     
     public function delete($id) {
         $db = $this->getDB();
-        $stmt = $db->prepare("Delete from email where email = :emailid");
+        $stmt = $db->prepare("Delete from email where emailid = :emailid");
         
         if ($stmt->execute(array(':emailid' => $id)) && $stmt->rowCount() > 0) {
             return true;
