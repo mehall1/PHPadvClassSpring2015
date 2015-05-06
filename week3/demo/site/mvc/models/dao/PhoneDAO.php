@@ -1,8 +1,8 @@
 <?php
 /**
- * Description of PhoneTypeDAO
+ * Description of PhoneDAO
  *
- * @author User
+ * @author GFORTI
  */
 
 namespace App\models\services;
@@ -12,20 +12,22 @@ use App\models\interfaces\IModel;
 use App\models\interfaces\ILogging;
 use \PDO;
 
-class PhoneTypeDAO extends BaseDAO implements IDAO {
-    
-    public function __construct( PDO $db, IModel $model, ILogging $log ) {        
+
+class PhoneDAO extends BaseDAO implements IDAO {
+        
+     public function __construct( PDO $db, IModel $model, ILogging $log ) {        
         $this->setDB($db);
         $this->setModel($model);
         $this->setLog($log);
     }
-          
+    
+    
     public function idExisit($id) {
-        
+                
         $db = $this->getDB();
-        $stmt = $db->prepare("SELECT * FROM phonetype WHERE phonetypeid = :phonetypeid");
+        $stmt = $db->prepare("SELECT phoneid FROM phone WHERE phoneid = :phoneid");
          
-        if ( $stmt->execute(array(':phonetypeid' => $id)) && $stmt->rowCount() > 0 ) {
+        if ( $stmt->execute(array(':phoneid' => $id)) && $stmt->rowCount() > 0 ) {
             return true;
         }
          return false;
@@ -37,14 +39,17 @@ class PhoneTypeDAO extends BaseDAO implements IDAO {
          
          $db = $this->getDB();
          
-         $stmt = $db->prepare("SELECT * FROM phonetype WHERE phonetypeid = :phonetypeid");
+         $stmt = $db->prepare("SELECT phone.phoneid, phone.phone, phone.phonetypeid, phonetype.phonetype, phonetype.active as phonetypeactive, phone.logged, phone.lastupdated, phone.active"
+                 . " FROM phone LEFT JOIN phonetype on phone.phonetypeid = phonetype.phonetypeid WHERE phoneid = :phoneid");
          
-         if ( $stmt->execute(array(':phonetypeid' => $id)) && $stmt->rowCount() > 0 ) {
+        if ( $stmt->execute(array(':phoneid' => $id)) && $stmt->rowCount() > 0 ) {
              $results = $stmt->fetch(PDO::FETCH_ASSOC);
-             $model->reset()->map($results);
-         }
+             $model->map($results);
+        }
          
-         return $model;
+        return $model;
+         
+        
     }
     
     
@@ -52,13 +57,14 @@ class PhoneTypeDAO extends BaseDAO implements IDAO {
                  
          $db = $this->getDB();
          
-         $binds = array( ":phonetype" => $model->getPhonetype(),
-                          ":active" => $model->getActive()
+         $binds = array( ":phone" => $model->getPhone(),
+                         ":active" => $model->getActive(),
+                         ":phonetypeid" => $model->getPhonetypeid()             
                     );
                          
-         if ( !$this->idExisit($model->getPhonetypeid()) ) {
+         if ( !$this->idExisit($model->getPhoneid()) ) {
              
-             $stmt = $db->prepare("INSERT INTO phonetype SET phonetype = :phonetype, active = :active");
+             $stmt = $db->prepare("INSERT INTO phone SET phone = :phone, phonetypeid = :phonetypeid, active = :active, logged = now(), lastupdated = now()");
              
              if ( $stmt->execute($binds) && $stmt->rowCount() > 0 ) {
                 return true;
@@ -74,15 +80,16 @@ class PhoneTypeDAO extends BaseDAO implements IDAO {
                  
          $db = $this->getDB();
          
-         $binds = array( ":phonetype" => $model->getPhonetype(),
-                          ":active" => $model->getActive(),
-                          ":phonetypeid" => $model->getPhonetypeid()
+        $binds = array( ":phone" => $model->getPhone(),
+                        ":active" => $model->getActive(),
+                        ":phonetypeid" => $model->getPhonetypeid(),
+                        ":phoneid" => $model->getPhoneid()
                     );
          
                 
-         if ( $this->idExisit($model->getPhonetypeid()) ) {
+         if ( $this->idExisit($model->getPhoneid()) ) {
             
-             $stmt = $db->prepare("UPDATE phonetype SET phonetype = :phonetype, active = :active WHERE phonetypeid = :phonetypeid");
+             $stmt = $db->prepare("UPDATE phone SET phone = :phone, phonetypeid = :phonetypeid,  active = :active, lastupdated = now() WHERE phoneid = :phoneid");
          
              if ( $stmt->execute($binds) && $stmt->rowCount() > 0 ) {
                 return true;
@@ -99,9 +106,9 @@ class PhoneTypeDAO extends BaseDAO implements IDAO {
     public function delete($id) {
           
         $db = $this->getDB();         
-        $stmt = $db->prepare("Delete FROM phonetype WHERE phonetypeid = :phonetypeid");
+        $stmt = $db->prepare("Delete FROM phone WHERE phoneid = :phoneid");
 
-        if ( $stmt->execute(array(':phonetypeid' => $id)) && $stmt->rowCount() > 0 ) {
+        if ( $stmt->execute(array(':phoneid' => $id)) && $stmt->rowCount() > 0 ) {
             return true;
         } else {
             $error = implode(",", $db->errorInfo());
@@ -115,7 +122,8 @@ class PhoneTypeDAO extends BaseDAO implements IDAO {
        $db = $this->getDB();
        $values = array();
        
-        $stmt = $db->prepare("SELECT * FROM phonetype");
+        $stmt = $db->prepare("SELECT phone.phoneid, phone.phone, phone.phonetypeid, phonetype.phonetype, phonetype.active as phonetypeactive, phone.logged, phone.lastupdated, phone.active"
+                 . " FROM phone LEFT JOIN phonetype on phone.phonetypeid = phonetype.phonetypeid");
         
         if ( $stmt->execute() && $stmt->rowCount() > 0 ) {
             $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -130,7 +138,6 @@ class PhoneTypeDAO extends BaseDAO implements IDAO {
         $stmt->closeCursor();
          return $values;
     }
-     
     
-     
+    
 }

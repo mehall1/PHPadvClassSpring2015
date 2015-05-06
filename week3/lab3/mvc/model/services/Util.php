@@ -5,7 +5,7 @@
  *
  * @author User
  */
-namespace week2\mhall;
+namespace lab\model\services;
 
 class Util {
     

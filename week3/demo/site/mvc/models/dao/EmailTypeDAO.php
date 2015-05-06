@@ -13,10 +13,11 @@
  */
 
 /* Finish doing the rest of the select commands for delete and get by id */
-namespace lab\model\dao;
-use lab\model\interfaces\IDAO;
-use lab\model\interfaces\IModel;
-use lab\model\interfaces\ILogging;
+namespace App\models\services;
+
+use APP\model\interfaces\IDAO;
+use App\model\interfaces\IModel;
+use App\model\interfaces\ILogging;
 use pdo;
 
 class EmailTypeDAO extends BaseDAO implements IDAO{

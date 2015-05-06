@@ -7,23 +7,21 @@
  */
 
 /**
- * Description of PhoneTypeService
+ * Description of EmailTypeService
  *
- * @author User
+ * @author 001148417
  */
+namespace lab\model\services;
 
-namespace App\models\services;
+use lab\model\interfaces\IDAO;
+use lab\model\interfaces\IService;
+use lab\model\interfaces\IModel;
 
-use App\models\interfaces\IDAO;
-use App\models\interfaces\IService;
-use App\models\interfaces\IModel;
-
-class PhoneTypeService implements IService {
+class EmailTypeService implements IService {
     
-     protected $DAO;
+    protected $DAO;
      protected $validator;
-     protected $model;
-             
+     
      function getValidator() {
          return $this->validator;
      }
@@ -32,14 +30,7 @@ class PhoneTypeService implements IService {
          $this->validator = $validator;
      }
 
-     function getModel() {
-         return $this->model;
-     }
-
-     function setModel(IModel $model) {
-         $this->model = $model;
-     }
-     
+                  
      
      function getDAO() {
          return $this->DAO;
@@ -49,19 +40,14 @@ class PhoneTypeService implements IService {
          $this->DAO = $DAO;
      }
 
-    public function __construct( IDAO $PhoneTypeDAO, IService $validator,IModel $model  ) {
-        $this->setDAO($PhoneTypeDAO);
+    public function __construct( IDAO $EmailTypeDAO, $validator  ) {
+        $this->setDAO($EmailTypeDAO);
         $this->setValidator($validator);
-        $this->setModel($model);
     }
     
     
     public function getAllRows($limit = "", $offset = "") {
         return $this->getDAO()->getAllRows($limit, $offset);
-    }
-    
-    public function idExist($id) {
-        return $this->getDAO()->idExisit($id);
     }
     
     public function read($id) {
@@ -90,22 +76,15 @@ class PhoneTypeService implements IService {
     
     public function validate( IModel $model ) {
         $errors = array();
-        if ( !$this->getValidator()->phoneTypeIsValid($model->getPhonetype()) ) {
-            $errors[] = 'Phone Type is invalid';
+        if ( !$this->getValidator()->emailTypeIsValid($model->getEmailtype()) ) {
+            $errors[] = 'Email Type is invalid';
         }
                
         if ( !$this->getValidator()->activeIsValid($model->getActive()) ) {
-            $errors[] = 'Phone active is invalid';
+            $errors[] = 'Email Type active is invalid';
         }
        
         
         return $errors;
     }
-    
-    
-    public function getNewPhoneTypeModel() {
-        return clone $this->getModel();
-    }
-    
-    
 }

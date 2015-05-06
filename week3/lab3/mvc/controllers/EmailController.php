@@ -7,30 +7,27 @@
  */
 
 /**
- * Description of PhonetypeController
+ * Description of EmailController
  *
- * @author User
+ * @author 001148417
  */
+namespace lab\controllers;
+use lab\model\interfaces\IController;
+use lab\model\services\Scope;
+use lab\model\interfaces\IService;
+use lab\model\interfaces\IModel;
 
-namespace APP\controller;
-
-use App\models\interfaces\IController;
-use App\models\interfaces\IService;
-
-class PhonetypeController extends BaseController implements IController {
-       
-    public function __construct( IService $PhoneTypeService ) {                
-        $this->service = $PhoneTypeService;     
-        
+class EmailController extends BaseController implements IController {
+    
+    public function __construct( IService $emailservice, IModel $model  ) {                
+        $this->service = $emailservice;     
+        $this->data['model'] = $model;
     }
-
-
-    public function execute(IService $scope) {
-                
-        $this->data['model'] = $this->service->getNewPhoneTypeModel();
-        $this->data['model']->reset();
-        $viewPage = 'phonetype';
+    
+    public function execute(Scope $scope) {
         
+        $this->data['model']->reset();
+        $viewPage = 'email';
         
         if ( $scope->util->isPostRequest() ) {
             
@@ -49,24 +46,20 @@ class PhonetypeController extends BaseController implements IController {
             
             if ( $scope->util->getAction() == 'edit' ) {
                 $viewPage .= 'edit';
-                $this->data['model'] = $this->service->read($scope->util->getPostParam('phonetypeid'));
+                $this->data['model'] = $this->service->read($scope->util->getPostParam('emailid'));
                   
             }
             
             if ( $scope->util->getAction() == 'delete' ) {                
-                $this->data["deleted"] = $this->service->delete($scope->util->getPostParam('phonetypeid'));
+                $this->data["deleted"] = $this->service->delete($scope->util->getPostParam('emailid'));
             }
-                       
         }
         
-        
-       
-        $this->data['PhoneTypes'] = $this->service->getAllRows();        
+        $this->data['email'] = $this->service->getAllRows();        
         
         
         $scope->view = $this->data;
         return $this->view($viewPage,$scope);
     }
-    
     
 }

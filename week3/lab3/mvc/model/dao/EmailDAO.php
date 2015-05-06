@@ -12,13 +12,12 @@
  * @author 001148417
  */
 namespace lab\model\dao;
-
 use lab\model\interfaces\IDAO;
 use lab\model\interfaces\IModel;
-//use lab\model\interfaces\ILogging;
+use lab\model\interfaces\ILogging;
 use pdo;
 
-class EmailDAO implements IDAO {
+class EmailDAO extends BaseDAO implements IDAO {
     
     private $DB = null;
     

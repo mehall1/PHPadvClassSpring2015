@@ -12,15 +12,15 @@
  * @author GFORTI
  */
 
-namespace APP\controller;
+namespace lab\controllers;
 
-use App\models\interfaces\IController;
-use App\models\interfaces\IService;
+use lab\model\interfaces\IController;
+use lab\model\services\Scope;
 
 
 class Page404Controller extends BaseController implements IController {
     
-    public function execute(IService $scope) {
+    public function execute(Scope $scope) {
         $this->data['error'] = $scope->util->getUrlParam('error');
         $scope->view = $this->data;
         return $this->view('page404',$scope);

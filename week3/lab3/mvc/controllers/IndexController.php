@@ -12,10 +12,10 @@
  * @author User
  */
 
-namespace APP\controller;
+namespace lab\controllers;
 
-use App\models\interfaces\IController;
-use App\models\interfaces\IService;
+use lab\model\interfaces\IController;
+use lab\model\services\Scope;
 
 class IndexController extends BaseController implements IController {
    
@@ -24,7 +24,7 @@ class IndexController extends BaseController implements IController {
     }
 
 
-    public function execute(IService $scope) {                  
+    public function execute(Scope $scope) {                  
         
         $this->data["cool"] = 'testing';
         $scope->view = $this->data;

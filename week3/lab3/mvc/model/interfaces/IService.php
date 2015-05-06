@@ -2,9 +2,7 @@
 
 namespace lab\model\interfaces;
 
-class IService {
+interface IService {
     // Interface for the Services
 }
 
-
-?>

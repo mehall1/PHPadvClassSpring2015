@@ -12,10 +12,10 @@
  * @author 001148417
  */
 
-namespace week2\mhall;
+namespace lab\model\dataobject;
 
 
-class EmailModel implements IModel {
+class EmailModel extends BaseModel {
     
     private $emailid;
     private $email;

@@ -14,13 +14,13 @@
 
 namespace APP\controller;
 
-use App\models\services\Scope;
+use App\models\interfaces\IService;
 
 class BaseController {
     
     protected $data = array();
     
-    protected function view($page, Scope $scope) {
+    protected function view($page, IService $scope) {
 
         $folder = "mvc".DIRECTORY_SEPARATOR."views";
         $file = $folder.DIRECTORY_SEPARATOR.$page.'.php';

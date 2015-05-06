@@ -1,5 +1,3 @@
-<?php namespace week2\mhall; ?>
-<?php include './bootstrap.php'; ?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -8,78 +6,23 @@
     </head>
     <body>
         <?php
-        // put your code here
-        // tests the local page ---- phpinfo();
-        $util = new Util();
-        $validator = new Validator();
         
-        
-        
-        $emailtypeid = filter_input(INPUT_POST, 'emailtypeid');
-        $email = filter_input(INPUT_POST, 'email');
-        $active = filter_input(INPUT_POST, 'active');
-        
-        $errors = array();
-        
-        $dbConfig = array(
-        "DB_DNS"=>'mysql:host=localhost;port=3306;dbname=PHPadvClassSpring2015',
-        "DB_USER"=>'root',
-        "DB_PASSWORD"=>''
-        );
-        
-        $pdo = new DB($dbConfig);
-        $db = $pdo->getDB();
-        
-        $emailDAO = new EmailDAO($db);
-        $emailtypeDAO = new EmailTypeDAO($db);
-        
-        $emailtypes = $emailtypeDAO->getAllRows();
-        
-        
-        if ( $util->isPostRequest() ) 
-        {
-         // we validate only if a post has been made
-        if ( !$validator->emailIsValid($email) ) {
-            $errors[] = 'Email is not valid';
-        }
-        
-        if ( empty($emailtypeid) ) {
-            $errors[] = 'Email type is invalid';
-        }
-        
-        if ( !$validator->activeIsValid($active) ) {
-            $errors[] = 'Active is not valid';
-        }  
-     
-         // if there are errors display them
-        if ( count($errors) > 0 ){
-            foreach ($errors as $value) 
-            {
-                echo '<p>',$value,'</p>';
+        if($scope->util->isPostRequest()) {
+            if ( isset($scope->view['errors'])) {
+                print_r($scope->view['errors']);
             }
-        } 
-        else {
-        
-            $emailModel = new EmailModel();
-                    
-            $emailModel->map(filter_input_array(INPUT_POST));
-                    
-                   
-            if ( $emailDAO->save($emailModel) ) 
-            {
-               echo 'Email Added';
-            } 
-            else 
-            {
-               echo 'Email not added';
-            }
-                   
-        }
-    
-    
+            
+            if ( isset($scope->view['saved']) && $scope->view['saved'] ) {
+                  echo 'Email Added';
+             }
+             
+             if ( isset($scope->view['deleted']) && $scope->view['deleted'] ) {
+                  echo 'Email deleted';
+             }
         }
         
-        
+        $email = $scope->view['model']->getEmail();
+        $active = $scope->view['model']->getActive();
         
         ?>
         
@@ -95,7 +38,9 @@
             
             <label>Email Type:</label> 
             <select name="emailtypeid">
-                <?php 
+                <?php
+                
+                    
                     foreach($emailtypes as $value)
                     {
                         if($value->getEmailtypeid() == $emailtypeid)

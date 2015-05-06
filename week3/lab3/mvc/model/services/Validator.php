@@ -7,7 +7,7 @@
  *
  * @author Gabriel Forti
  */
-namespace week2\mhall;
+namespace lab\model\services;
 
 class Validator {
 

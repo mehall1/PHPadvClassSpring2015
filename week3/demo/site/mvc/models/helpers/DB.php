@@ -1,27 +1,24 @@
 <?php
-
 /**
- * DB is the general class to connection to our database
+ * Description of DB
  *
  * @author GForti
  */
 
-namespace week2\mhall;
-use pdo;
+namespace App\models\services;
+use App\models\interfaces\ILogging;
+use \PDO;
+use App\models\interfaces\IService;
 
-class DB {
+class DB implements IService {
     
     protected $db = null;
     private $dbConfig = array();
-   
-     
-    /**
-    * The contructor requires.
-    *    
-    * @param {Array} [$dbConfig] - Database config
-    */    
-    public function __construct($dbConfig) {
+    private $log = null;
+
+    public function __construct($dbConfig, ILogging $log) {
         $this->setDbConfig($dbConfig);      
+        $this->setLog($log);
     }
     
     private function getDbConfig() {
@@ -32,11 +29,18 @@ class DB {
         $this->dbConfig = $dbConfig;
     }
     
-    /**
-    * A method to get our database connection.
-    *    
-    * @return PDO
-    */           
+    private function getLog() {
+        return $this->log;
+    }
+
+    private function setLog($log) {
+        if ( $log instanceof ILogging) {
+            $this->log = $log;
+        }
+        
+    }
+
+            
     public function getDB() { 
         if ( null != $this->db ) {
             return $this->db;
@@ -46,17 +50,12 @@ class DB {
             $this->db = new PDO($config['DB_DNS'], $config['DB_USER'], $config['DB_PASSWORD']);
             $this->db->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
         } catch (Exception $ex) {
-          
+          $this->getLog()->log($ex->getMessage());
            $this->closeDB();
         }
         return $this->db;        
     }
     
-    /**
-    * A method to close our database connection.
-    *    
-    * @return void
-    */  
      public function closeDB() {        
         $this->db = null;        
     }

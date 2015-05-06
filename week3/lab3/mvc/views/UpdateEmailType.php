@@ -1,5 +1,4 @@
-<?php namespace week2\mhall; ?>
-<?php include './bootstrap.php'; ?>
+
 <html>
     <head>
         <meta charset="UTF-8">
