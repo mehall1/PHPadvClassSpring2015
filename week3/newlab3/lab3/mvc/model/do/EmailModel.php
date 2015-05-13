@@ -12,8 +12,9 @@
  * @author 001148417
  */
 
-namespace lab\model\dataobject;
+namespace lab\model\services;
 
+use lab\model\interfaces\IModel;
 
 class EmailModel extends BaseModel {
     

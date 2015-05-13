@@ -7,11 +7,14 @@
  */
 
 /**
- * Description of PageNotFoundException
+ * Description of IModel
  *
- * @author GFORTI
+ * @author User
  */
-namespace lab\model\services;
+namespace App\models\interfaces;
 
-use Exception;
-class PageNotFoundException extends Exception {}
+interface IModel {
+    public function reset();
+    public function map(array $values);
+    public function getAllValues();
+}

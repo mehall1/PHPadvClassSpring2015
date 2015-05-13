@@ -9,12 +9,13 @@
 /**
  * Description of BaseDAO
  *
- * @author 001148417
+ * @author User
  */
-namespace lab\model\services;
-use lab\model\interfaces\IModel;
-use lab\model\interfaces\ILogging;
-use pdo;
+
+namespace App\models\services;
+use \App\models\interfaces\IModel;
+use App\models\interfaces\ILogging;
+use \PDO;
 
 abstract class BaseDAO {
     
@@ -124,4 +125,5 @@ abstract class BaseDAO {
         return $values;
     }
 */
+
 }

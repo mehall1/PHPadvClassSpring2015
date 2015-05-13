@@ -4,7 +4,7 @@
  *
  * @author GFORTI
  */
-namespace lab\model\services;
+namespace App\models\services;
 
 use Exception;
 class ScopeVariableNotFoundException extends Exception {}

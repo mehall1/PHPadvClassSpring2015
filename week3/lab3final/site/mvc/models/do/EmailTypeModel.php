@@ -13,7 +13,7 @@
  */
 
 
-namespace lab\model\services;
+namespace App\models\services;
 
 class EmailTypeModel extends BaseModel {
     

@@ -11,7 +11,7 @@
  *
  * @author 001148417
  */
-namespace lab\model\dao;
+namespace lab\model\services;
 use lab\model\interfaces\IDAO;
 use lab\model\interfaces\IModel;
 use lab\model\interfaces\ILogging;

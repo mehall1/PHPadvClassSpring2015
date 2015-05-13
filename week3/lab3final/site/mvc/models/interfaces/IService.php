@@ -7,11 +7,14 @@
  */
 
 /**
- * Description of PageNotFoundException
+ * Description of IService
  *
- * @author GFORTI
+ * @author User
  */
-namespace lab\model\services;
 
-use Exception;
-class PageNotFoundException extends Exception {}
+namespace App\models\interfaces;
+
+
+interface IService {
+    //put your code here
+}

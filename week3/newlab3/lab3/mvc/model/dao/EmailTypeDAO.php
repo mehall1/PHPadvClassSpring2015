@@ -13,7 +13,7 @@
  */
 
 /* Finish doing the rest of the select commands for delete and get by id */
-namespace lab\model\dao;
+namespace lab\model\services;
 use lab\model\interfaces\IDAO;
 use lab\model\interfaces\IModel;
 use lab\model\interfaces\ILogging;

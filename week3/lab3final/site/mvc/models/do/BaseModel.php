@@ -9,12 +9,14 @@
 /**
  * Description of BaseModel
  *
- * @author 001148417
+ * @author User
  */
-namespace lab\model\services;
-use lab\model\interfaces\IModel;
 
-class BaseModel implements IModel {
+namespace App\models\services;
+
+use App\models\interfaces\IModel;
+
+abstract class BaseModel implements IModel {
     
     public function map(array $values) {
         
@@ -55,4 +57,6 @@ class BaseModel implements IModel {
         return $values; 
         
     }
+    
+    
 }
