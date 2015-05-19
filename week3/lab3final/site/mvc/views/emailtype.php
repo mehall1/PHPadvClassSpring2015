@@ -37,7 +37,7 @@ and open the template in the editor.
          
          
         ?>
-        
+         <br />
         <a href="emailtype">Email Type</a>
         <a href="email">Email</a>
         

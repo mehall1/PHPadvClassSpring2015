@@ -22,7 +22,7 @@
             $active = $scope->view['model']->getActive();
             $emailTypeid = $scope->view['model']->getEmailtypeid();
         ?>
-        
+        <br />
         <a href="emailtype">Email Type</a>
         <a href="email">Email</a>
         
