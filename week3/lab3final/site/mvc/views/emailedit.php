@@ -23,6 +23,9 @@
             $emailTypeid = $scope->view['model']->getEmailtypeid();
         ?>
         
+        <a href="emailtype">Email Type</a>
+        <a href="email">Email</a>
+        
         <h3>Add email</h3>
         <form action="#" method="post">
             <label>Email:</label>            

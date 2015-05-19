@@ -22,12 +22,15 @@
          $emailtypeid = $scope->view['model']->getEmailtypeid();
         ?>
         
+        <a href="emailtype">Email Type</a>
+        <a href="email">Email</a>
+        
         
          <h3>Edit email type</h3>
         <form action="#" method="post">
             <label>Email Type:</label> 
             <input type="text" name="emailtype" value="<?php echo $emailType; ?>" placeholder="" />
-            <input type="number" max="1" min="0" name="Active" value="<?php echo $active; ?>" />
+            <input type="number" max="1" min="0" name="active" value="<?php echo $active; ?>" />
             <input type="hidden"  name="emailtypeid" value="<?php echo $emailtypeid; ?>" />
             <input type="hidden" name="action" value="update" />
             <input type="submit" value="Submit" />

@@ -198,7 +198,7 @@ use Exception;
         $_emailService = new EmailService($_emailDAO, $_emailTypeService, $_validator, $_emailmodel);
         
         
-        $_emailTypemodel = new EmailTypeModel();
+        
         
          
         

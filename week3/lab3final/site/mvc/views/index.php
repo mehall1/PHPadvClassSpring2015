@@ -5,11 +5,11 @@
         <title></title>
     </head>
     <body>
-        cool
+        
         <?php
         // put your code here
         
-        var_dump($scope->view);
+       // var_dump($scope->view);
         
         
         ?>

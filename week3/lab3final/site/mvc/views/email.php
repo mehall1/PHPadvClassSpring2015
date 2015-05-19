@@ -27,7 +27,11 @@
             $email = $scope->view['model']->getEmail();
             $active = $scope->view['model']->getActive();
             $emailTypeid = $scope->view['model']->getEmailtypeid();
+            
         ?>
+        
+        <a href="emailtype">Email Type</a>
+        <a href="email">Email</a>
         
         <h3>Add email</h3>
         <form action="#" method="post">
@@ -39,7 +43,7 @@
             
             <br /><br />
             <label>Email Type:</label>
-            <select name="emailtypeid">
+            <select name="emailTypeid">
             <?php 
                 foreach ($scope->view['emailTypes'] as $value) {
                     if ( $value->getEmailtypeid() == $emailTypeid ) {
@@ -60,11 +64,11 @@
         
          <br />
          <br />
-         
+       <!--  
         <form action="#" method="post">
             <input type="hidden" name="action" value="add" />
             <input type="submit" value="ADD Page" /> 
-        </form>
+        </form>-->
         
          <?php 
          

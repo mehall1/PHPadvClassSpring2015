@@ -54,6 +54,10 @@ class EmailTypeService implements IService {
         $this->setModel($model);
     }
     
+    public function idExist($id) {
+        return $this->getDAO()->idExisit($id);
+    }
+    
     
     public function getAllRows($limit = "", $offset = "") {
         return $this->getDAO()->getAllRows($limit, $offset);

@@ -9,7 +9,7 @@
 /**
  * Description of Scope
  *
- * @author GForti
+ * @author mike hall
  */
 namespace App\models\services;
 
