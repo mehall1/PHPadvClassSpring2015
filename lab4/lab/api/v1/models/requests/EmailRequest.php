@@ -36,7 +36,7 @@ class EmailRequest implements IRequest {
         $id = intval($model->getId());
         
         if ( $id > 0 ) { 
-            if ( $this->service->idExisit($model->getId()) ) {
+            if ( $this->service->idExist($model->getId()) ) {
                 return $this->service->read($model->getId())->getAllPropteries();
             } else {
                 throw new NoContentRequestException($id . ' ID does not exist');

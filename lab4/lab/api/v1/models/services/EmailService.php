@@ -58,8 +58,8 @@ class EmailService implements IService {
         $this->setModel($model);
     }
     
-     public function idExisit($id) {
-        return $this->getEmailDAO()->idExisit($id);
+     public function idExist($id) {
+        return $this->getEmailDAO()->idExist($id);
     }
     public function getAllEmailTypes() {       
         return $this->getEmailTypeService()->getAllRows();   
@@ -77,6 +77,10 @@ class EmailService implements IService {
             return $this->getEmailDAO()->create($model);
         }
         return false;
+    }
+    
+    public function getAllRows($limit = "", $offset = "") {
+        return $this->getEmailDAO()->getAllRows($limit, $offset);
     }
     
     

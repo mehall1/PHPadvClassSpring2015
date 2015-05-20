@@ -20,7 +20,7 @@ class EmailTypeDAO extends BaseDAO implements IDAO {
         $this->setLog($log);
     }
           
-    public function idExisit($id) {
+    public function idExist($id) {
         
         $db = $this->getDB();
         $stmt = $db->prepare("SELECT * FROM emailtype WHERE emailtypeid = :emailtypeid");
@@ -56,7 +56,7 @@ class EmailTypeDAO extends BaseDAO implements IDAO {
                           ":active" => $model->getActive()
                     );
                       
-         if ( !$this->idExisit($model->getEmailtypeid()) ) {
+         if ( !$this->idExist($model->getEmailtypeid()) ) {
              
              $stmt = $db->prepare("INSERT INTO emailtype SET emailtype = :emailtype, active = :active");
              
@@ -80,7 +80,7 @@ class EmailTypeDAO extends BaseDAO implements IDAO {
                     );
          
                 
-         if ( $this->idExisit($model->getEmailtypeid()) ) {
+         if ( $this->idExist($model->getEmailtypeid()) ) {
             
              $stmt = $db->prepare("UPDATE emailtype SET emailtype = :emailtype, active = :active WHERE emailtypeid = :emailtypeid");
          

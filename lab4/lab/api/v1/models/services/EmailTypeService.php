@@ -55,7 +55,7 @@ class EmailTypeService implements IService {
     }
     
     public function idExist($id) {
-        return $this->getDAO()->idExisit($id);
+        return $this->getDAO()->idExist($id);
     }
     
     

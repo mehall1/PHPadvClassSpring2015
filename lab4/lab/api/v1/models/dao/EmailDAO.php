@@ -2,7 +2,7 @@
 /**
  * Description of EmailDAO
  *
- * @author GFORTI
+ * @author mhall
  */
 
 namespace API\models\services;
@@ -22,7 +22,7 @@ class EmailDAO extends BaseDAO implements IDAO {
     }
     
     
-    public function idExisit($id) {
+    public function idExist($id) {
                 
         $db = $this->getDB();
         $stmt = $db->prepare("SELECT emailid FROM email WHERE emailid = :emailid");
@@ -62,7 +62,7 @@ class EmailDAO extends BaseDAO implements IDAO {
                          ":emailtypeid" => $model->getEmailtypeid()             
                     );
                          
-         if ( !$this->idExisit($model->getEmailid()) ) {
+         if ( !$this->idExist($model->getEmailid()) ) {
              
              $stmt = $db->prepare("INSERT INTO email SET email = :email, emailtypeid = :emailtypeid, active = :active, logged = now(), lastupdated = now()");
              
@@ -87,7 +87,7 @@ class EmailDAO extends BaseDAO implements IDAO {
                     );
          
                 
-         if ( $this->idExisit($model->getEmailid()) ) {
+         if ( $this->idExist($model->getEmailid()) ) {
             
              $stmt = $db->prepare("UPDATE email SET email = :email, emailtypeid = :emailtypeid,  active = :active, lastupdated = now() WHERE emailid = :emailid");
          
