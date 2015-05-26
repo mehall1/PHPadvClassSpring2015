@@ -95,3 +95,51 @@
 [555bf1fedc4b5]	[exception]	[05-20-2015 4:31am]	New Email Type Not Created
 [555bf20db10de]	[exception]	[05-20-2015 4:31am]	New Email Type Not Created
 [555bf21d4b795]	[exception]	[05-20-2015 4:31am]	New Email Type Not Created
+[5564e93d50955]	[exception]	[05-26-2015 11:44pm]	New Email Not Created
+[5564e95a1454c]	[exception]	[05-26-2015 11:44pm]	New Email Type Not Created
+[5564e9c46df87]	[exception]	[05-26-2015 11:46pm]	0 ID Email Type Not Deleted
+[5564e9cfd4aaa]	[exception]	[05-26-2015 11:46pm]	0 ID Email Type Not Deleted
+[5564e9d06c705]	[exception]	[05-26-2015 11:46pm]	0 ID Email Type Not Deleted
+[5564e9d0914f4]	[exception]	[05-26-2015 11:46pm]	0 ID Email Type Not Deleted
+[5564e9dfbd906]	[exception]	[05-26-2015 11:47pm]	New Email Type Not Created
+[5564ea6767319]	[exception]	[05-26-2015 11:49pm]	New Email Type Not Created
+[5564ec161154a]	[exception]	[05-26-2015 11:56pm]	New Email Type Not Created
+[5564ec2198415]	[exception]	[05-26-2015 11:56pm]	New Email Not Created
+[5564ec22b7ca2]	[exception]	[05-26-2015 11:56pm]	New Email Not Created
+[5564ec301a108]	[exception]	[05-26-2015 11:57pm]	New Email Not Created
+[5564ec30daf6a]	[exception]	[05-26-2015 11:57pm]	New Email Not Created
+[5564ec310519f]	[exception]	[05-26-2015 11:57pm]	New Email Not Created
+[5564ec31362e6]	[exception]	[05-26-2015 11:57pm]	New Email Not Created
+[5564ec35856fb]	[exception]	[05-26-2015 11:57pm]	New Email Not Created
+[5564ec364f439]	[exception]	[05-26-2015 11:57pm]	New Email Not Created
+[5564ec367599b]	[exception]	[05-26-2015 11:57pm]	New Email Not Created
+[5564ec49cdf6b]	[exception]	[05-26-2015 11:57pm]	0 ID Email Not Deleted
+[5564ec5ca7180]	[exception]	[05-26-2015 11:57pm]	0 ID Email Not Deleted
+[5564ec6536d76]	[exception]	[05-26-2015 11:57pm]	0 ID Email Not Deleted
+[5564ec65bbeab]	[exception]	[05-26-2015 11:57pm]	0 ID Email Not Deleted
+[5564ec65e0c9a]	[exception]	[05-26-2015 11:57pm]	0 ID Email Not Deleted
+[5564ec6f82a66]	[exception]	[05-26-2015 11:58pm]	3 ID does not exist
+[5564ec81b78a0]	[exception]	[05-26-2015 11:58pm]	5 ID does not exist
+[5564ec885d70e]	[exception]	[05-26-2015 11:58pm]	Email Not Updated
+[5564ec9deb170]	[exception]	[05-26-2015 11:58pm]	Email Not Updated
+[5564ecbe2196b]	[exception]	[05-26-2015 11:59pm]	New Email Not Created
+[5564ecc3a1b64]	[exception]	[05-26-2015 11:59pm]	New Email Not Created
+[5564ecc44c0a9]	[exception]	[05-26-2015 11:59pm]	New Email Not Created
+[5564ecc478f86]	[exception]	[05-26-2015 11:59pm]	New Email Not Created
+[5564ecf4c554f]	[exception]	[05-27-2015 12:00am]	New Email Not Created
+[5564ecfc0cc73]	[exception]	[05-27-2015 12:00am]	New Email Not Created
+[5564ecfc98b10]	[exception]	[05-27-2015 12:00am]	New Email Not Created
+[5564ed0767466]	[exception]	[05-27-2015 12:00am]	New Email Not Created
+[5564ed0f65d9c]	[exception]	[05-27-2015 12:00am]	New Email Not Created
+[5564ed0ff2fbf]	[exception]	[05-27-2015 12:00am]	New Email Not Created
+[5564ed102bc5c]	[exception]	[05-27-2015 12:00am]	New Email Not Created
+[5564ed10573c7]	[exception]	[05-27-2015 12:00am]	New Email Not Created
+[5564ed107ae2d]	[exception]	[05-27-2015 12:00am]	New Email Not Created
+[5564ed13c8279]	[exception]	[05-27-2015 12:00am]	New Email Not Created
+[5564ed14118c1]	[exception]	[05-27-2015 12:00am]	New Email Not Created
+[5564ed1c9204b]	[exception]	[05-27-2015 12:01am]	New Email Not Created
+[5564ed1d0eee6]	[exception]	[05-27-2015 12:01am]	New Email Not Created
+[5564ed1d5ec71]	[exception]	[05-27-2015 12:01am]	New Email Not Created
+[5564ed1d851d2]	[exception]	[05-27-2015 12:01am]	New Email Not Created
+[5564ed3a768b4]	[exception]	[05-27-2015 12:01am]	New Email Type Not Created
+[5564ed55735c5]	[exception]	[05-27-2015 12:01am]	New Email Type Not Created

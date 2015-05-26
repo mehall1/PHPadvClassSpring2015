@@ -58,7 +58,7 @@ class EmailRequest implements IRequest {
         $emailModel->map($model->getRequestData());
         $emailModel->setEmailid($id);
         
-        if ( !$this->service->idExisit($id) ) {
+        if ( !$this->service->idExist($id) ) {
             throw new NoContentRequestException($id . ' ID does not exist');
         }
         
